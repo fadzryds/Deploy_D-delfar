@@ -38,6 +38,7 @@ class SparepartResource extends Resource
                 ->required(),
 
             Forms\Components\FileUpload::make('image')
+                ->disk('public')
                 ->label('Gambar')
                 ->image()
                 ->directory('spareparts'),
