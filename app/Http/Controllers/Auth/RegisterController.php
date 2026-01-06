@@ -24,19 +24,19 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        // Buat user baru
+        // Buat user baru (ROLE = USER)
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // hash password sekali
-            'role' => 'user',           // default user
-            'nomor_karyawan' => null,   // default null
+            'password' => Hash::make($request->password),
+            'role' => 'user',              // ⬅️ PENTING
+            'nomor_karyawan' => null,
         ]);
 
-        // Login langsung
+        // Login user biasa
         Auth::login($user);
 
-        // Redirect ke landing page
+        // Redirect ke landing (BUKAN admin)
         return redirect()->route('landing');
     }
 }

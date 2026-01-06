@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
-        'foto',
         'nomor_karyawan',
     ];
 
@@ -27,17 +24,11 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    public function customer(): HasOne
-    {
-        return $this->hasOne(Customer::class);
-    }
-
+    /**
+     * Filament authorization
+     */
     public function canAccessPanel(Panel $panel): bool
     {
-        return in_array(strtolower($this->role), ['admin', 'staff']);
+        return in_array($this->role, ['admin', 'staff']);
     }
 }
