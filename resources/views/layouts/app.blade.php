@@ -24,7 +24,7 @@
             <a href="/">Home</a>
             <a href="/sparepart">Sparepart</a>
             <a href="/service">Service</a>
-            <a href="/about">About</a>
+            <a href="#about">About</a>
         </div>
 
 
@@ -99,7 +99,7 @@
         <a href="/">Home</a>
         <a href="/sparepart">Sparepart</a>
         <a href="/service">Service</a>
-        <a href="/about">About</a>
+        <a href="#about">About</a>
     
         {{-- IF USER NOT LOGGED IN --}}
         @guest
