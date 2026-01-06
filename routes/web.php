@@ -15,6 +15,8 @@ use App\Http\Controllers\SparepartCheckoutController;
 use App\Http\Controllers\SparepartOrderController;
 use App\Http\Controllers\CheckoutSparepartController;
 use App\Http\Controllers\CartController;
+use App\Models\User; 
+use Illuminate\Support\Facades\Hash; // Tambahkan ini
 
 // Landing Page
 Route::get('/', [SparepartController::class, 'landing'])->name('landing');
